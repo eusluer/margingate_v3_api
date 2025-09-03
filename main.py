@@ -1,4 +1,4 @@
-# main.py (Nihai Düzeltmeyle Birlikte Tam Hali)
+# main.py (Nihai ve Stabil Versiyon)
 
 import os
 import time
@@ -73,7 +73,7 @@ def run_signal_generator(config, supabase):
     breakout_states = {symbol: {'short_detected': False, 'long_detected': False, 'peak_price': 0, 'trough_price': 0} for symbol in config['symbols']}
     while True:
         try:
-            response = supabase.table('signals').select('*').eq('status', 'active').execute()
+            response = supabase.table('signals').select('id, symbol, type, stop_loss, take_profit_2R').eq('status', 'active').execute()
             active_trades = response.data if response.data else []
             active_symbols = [trade['symbol'] for trade in active_trades]
             for trade in active_trades:
@@ -139,15 +139,16 @@ async def async_telegram_main(config, supabase):
     application.add_handler(CommandHandler("start", start_command))
     application.add_handler(CommandHandler("subscribe", subscribe_command))
     application.add_handler(CommandHandler("unsubscribe", unsubscribe_command))
-    logging.info("Telegram Botu başlatıldı ve dinlemede...")
-    # Sinyal dinlemeyi devre dışı bırakarak thread hatasını çözüyoruz
-    await application.run_polling(stop_signals=None)
+    async with application:
+        logging.info("Telegram Botu başlatıldı ve dinlemede...")
+        await application.start()
+        await application.updater.start_polling(stop_signals=None)
+        while True:
+            await asyncio.sleep(3600)
 def run_telegram_bot(config, supabase):
     logging.info("Telegram Bot thread'i başlatılıyor...")
     try:
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        loop.run_until_complete(async_telegram_main(config, supabase))
+        asyncio.run(async_telegram_main(config, supabase))
     except Exception as e:
         logging.critical(f"Telegram botu thread'inde kritik hata: {e}", exc_info=True)
 
@@ -164,7 +165,7 @@ def run_notifier(config, supabase):
     token = config['telegram']['token']
     while True:
         try:
-            response = supabase.table('signals').select('*').eq('status', 'active').eq('notified', False).execute()
+            response = supabase.table('signals').select('id, symbol, type, entry_price, stop_loss, take_profit_2R').eq('status', 'active').eq('notified', False).execute()
             new_signals = response.data
             if new_signals:
                 sub_response = supabase.table('subscribers').select('telegram_chat_id').eq('is_active', True).execute()
