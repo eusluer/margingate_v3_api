@@ -1,4 +1,4 @@
-# main.py (İsimlendirme Düzeltmesi Yapılmış Nihai Versiyon)
+# main.py (Otomatik Abonelikli Son Versiyon)
 
 import os
 import time
@@ -41,7 +41,6 @@ def get_ny_4h_levels(symbol, for_date, exchange, ny_timezone):
     except Exception as e:
         logging.error(f"[{symbol}] 4S seviyeleri alınamadı: {e}")
     return None, None
-
 def find_new_signal(df, upper_limit, lower_limit, breakout_state):
     if df.empty or len(df) < 2: return None
     last_candle = df.iloc[-2]
@@ -54,9 +53,7 @@ def find_new_signal(df, upper_limit, lower_limit, breakout_state):
         if last_candle['close'] < upper_limit:
             entry_price, stop_loss = last_candle['close'], breakout_state['peak_price']
             if (stop_loss - entry_price) > 0:
-                # DÜZELTME 1:
-                take_profit = entry_price - 2 * (stop_loss - entry_price)
-                new_signal = {"type": "SHORT", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2r": take_profit}
+                new_signal = {"type": "SHORT", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2r": entry_price - 2 * (stop_loss - entry_price)}
             breakout_state['short_detected'] = False
     if not breakout_state['long_detected'] and last_candle['close'] < lower_limit:
         breakout_state['long_detected'] = True
@@ -66,12 +63,9 @@ def find_new_signal(df, upper_limit, lower_limit, breakout_state):
         if last_candle['close'] > lower_limit:
             entry_price, stop_loss = last_candle['close'], breakout_state['trough_price']
             if (entry_price - stop_loss) > 0:
-                # DÜZELTME 2:
-                take_profit = entry_price + 2 * (entry_price - stop_loss)
-                new_signal = {"type": "LONG", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2r": take_profit}
+                new_signal = {"type": "LONG", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2r": entry_price + 2 * (entry_price - stop_loss)}
             breakout_state['long_detected'] = False
     return new_signal
-
 def run_signal_generator(config, supabase):
     logging.info("Sinyal Üretici thread'i başlatıldı.")
     exchange = ccxt.binance()
@@ -79,7 +73,6 @@ def run_signal_generator(config, supabase):
     breakout_states = {symbol: {'short_detected': False, 'long_detected': False, 'peak_price': 0, 'trough_price': 0} for symbol in config['symbols']}
     while True:
         try:
-            # DÜZELTME 3:
             response = supabase.table('signals').select('id, symbol, type, stop_loss, take_profit_2r').eq('status', 'active').execute()
             active_trades = response.data if response.data else []
             active_symbols = [trade['symbol'] for trade in active_trades]
@@ -118,17 +111,42 @@ def run_signal_generator(config, supabase):
 
 # --- 3: TELEGRAM BOTU BÖLÜMÜ ---
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("/subscribe - Bildirim almak için abone olun.\n/unsubscribe - Abonelikten ayrılın.")
-async def subscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Kullanıcı /start dediğinde OTOMATİK OLARAK ABONE EDER."""
     chat_id = update.message.chat_id
+    username = update.message.from_user.username
+    supabase = context.bot_data["supabase"]
+    
+    welcome_message = (
+        "Merhaba! Sinyal botuna hoş geldiniz.\n\n"
+        "Yeni sinyal bildirimleri için aboneliğiniz otomatik olarak başlatıldı. ✅\n\n"
+        "Abonelikten ayrılmak isterseniz /unsubscribe komutunu kullanabilirsiniz."
+    )
+    
+    try:
+        supabase.table('subscribers').upsert({
+            'telegram_chat_id': chat_id,
+            'username': username,
+            'is_active': True
+        }, on_conflict='telegram_chat_id').execute()
+        await update.message.reply_text(welcome_message)
+        logging.info(f"/start komutu ile yeni abone: {chat_id} ({username})")
+    except Exception as e:
+        logging.error(f"Otomatik abone olma hatası: {e}")
+        await update.message.reply_text("❌ Hoş geldiniz! Ancak abonelik sırasında bir hata oluştu. Lütfen /subscribe komutunu deneyin.")
+
+async def subscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Kullanıcı /subscribe dediğinde abone eder."""
+    chat_id = update.message.chat_id
+    username = update.message.from_user.username
     supabase = context.bot_data["supabase"]
     try:
         supabase.table('subscribers').upsert({'telegram_chat_id': chat_id, 'is_active': True}, on_conflict='telegram_chat_id').execute()
-        await update.message.reply_text("✅ Başarıyla abone oldunuz!")
-        logging.info(f"Yeni abone: {chat_id}")
+        await update.message.reply_text("✅ Başarıyla abone oldunuz! Yeni sinyaller size bildirilecektir.")
+        logging.info(f"Manuel abone: {chat_id} ({username})")
     except Exception as e:
         logging.error(f"Abone olma hatası: {e}")
         await update.message.reply_text("❌ Abonelik sırasında bir hata oluştu.")
+
 async def unsubscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.message.chat_id
     supabase = context.bot_data["supabase"]
@@ -139,6 +157,7 @@ async def unsubscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE
     except Exception as e:
         logging.error(f"Abonelikten ayrılma hatası: {e}")
         await update.message.reply_text("❌ Abonelikten ayrılırken bir hata oluştu.")
+
 async def async_telegram_main(config, supabase):
     token = config['telegram']['token']
     application = Application.builder().token(token).build()
@@ -152,6 +171,7 @@ async def async_telegram_main(config, supabase):
         await application.updater.start_polling(stop_signals=None)
         while True:
             await asyncio.sleep(3600)
+
 def run_telegram_bot(config, supabase):
     logging.info("Telegram Bot thread'i başlatılıyor...")
     try:
@@ -167,33 +187,47 @@ def send_telegram_message(token, chat_id, message):
         requests.post(url, json=payload, timeout=10)
     except Exception as e:
         logging.error(f"{chat_id}'ye mesaj gönderilemedi: {e}")
+
 def run_notifier(config, supabase):
     logging.info("Bildirim Dağıtıcı thread'i başlatıldı.")
     token = config['telegram']['token']
     while True:
         try:
-            # DÜZELTME 4:
-            response = supabase.table('signals').select('id, symbol, type, entry_price, stop_loss, take_profit_2r').eq('status', 'active').eq('notified', False).execute()
-            new_signals = response.data
-            if new_signals:
+            # Kapanış bildirimi gönderilecekleri bul
+            closed_response = supabase.table('signals').select('*').in_('status', ['tp_hit', 'sl_hit']).eq('closure_notified', False).execute()
+            if closed_response.data:
                 sub_response = supabase.table('subscribers').select('telegram_chat_id').eq('is_active', True).execute()
                 subscribers = sub_response.data
                 if subscribers:
-                    for signal in new_signals:
-                        # DÜZELTME 5:
-                        msg = (f"🚨 YENİ SİNYAL: *{signal['symbol']}*\n"
-                               f"Yön: *{signal['type']}*\n"
+                    for signal in closed_response.data:
+                        result_icon = "✅" if signal['status'] == 'tp_hit' else "❌"
+                        result_text = "TP OLDU" if signal['status'] == 'tp_hit' else "STOP OLDU"
+                        msg = (f"{result_icon} *POZİSYON KAPANDI* {result_icon}\n\n"
+                               f"*{signal['symbol']}* - *{signal['type']}*\n\n"
+                               f"Sonuç: *{result_text}*")
+                        for sub in subscribers: send_telegram_message(token, sub['telegram_chat_id'], msg)
+                        supabase.table('signals').update({'closure_notified': True}).eq('id', signal['id']).execute()
+                        logging.info(f"Sinyal ID {signal['id']} için KAPANIŞ bildirimi tamamlandı.")
+
+            # Yeni sinyal bildirimi gönderilecekleri bul
+            new_response = supabase.table('signals').select('*').eq('notified', False).execute()
+            if new_response.data:
+                sub_response = supabase.table('subscribers').select('telegram_chat_id').eq('is_active', True).execute()
+                subscribers = sub_response.data
+                if subscribers:
+                    for signal in new_response.data:
+                        msg = (f"🚨 *YENİ SİNYAL* 🚨\n\n"
+                               f"*{signal['symbol']}* - *{signal['type']}*\n\n"
                                f"Giriş Fiyatı: `{signal['entry_price']:.4f}`\n"
                                f"Stop Loss: `{signal['stop_loss']:.4f}`\n"
                                f"Take Profit: `{signal['take_profit_2r']:.4f}`")
-                        for sub in subscribers:
-                            send_telegram_message(token, sub['telegram_chat_id'], msg)
-                            time.sleep(0.1)
+                        for sub in subscribers: send_telegram_message(token, sub['telegram_chat_id'], msg)
                         supabase.table('signals').update({'notified': True}).eq('id', signal['id']).execute()
-                        logging.info(f"Sinyal ID {signal['id']} için bildirimler tamamlandı.")
+                        logging.info(f"Sinyal ID {signal['id']} için YENİ SİNYAL bildirimi tamamlandı.")
         except Exception as e:
             logging.error(f"Bildirim döngüsünde hata: {e}")
         time.sleep(config['loop_intervals']['notifier'])
+
 
 # --- ANA PROGRAM BAŞLANGICI ---
 if __name__ == "__main__":
