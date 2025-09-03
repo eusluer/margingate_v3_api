@@ -1,4 +1,4 @@
-# main.py (Son Düzeltmeyle Birlikte Tam Hali)
+# main.py (Nihai Düzeltmeyle Birlikte Tam Hali)
 
 import os
 import time
@@ -106,7 +106,7 @@ def run_signal_generator(config, supabase):
                             logging.info(f"[{symbol}] YENİ SİNYAL: {signal_data}")
             time.sleep(config['loop_intervals']['signal_generator'])
         except Exception as e:
-            logging.critical(f"Sinyal Üretici ana döngü hatası: {e}")
+            logging.critical(f"Sinyal Üretici ana döngü hatası: {e}", exc_info=True)
             time.sleep(60)
 
 # --- 3: TELEGRAM BOTU BÖLÜMÜ ---
@@ -140,12 +140,11 @@ async def async_telegram_main(config, supabase):
     application.add_handler(CommandHandler("subscribe", subscribe_command))
     application.add_handler(CommandHandler("unsubscribe", unsubscribe_command))
     logging.info("Telegram Botu başlatıldı ve dinlemede...")
-    await application.run_polling()
+    # Sinyal dinlemeyi devre dışı bırakarak thread hatasını çözüyoruz
+    await application.run_polling(stop_signals=None)
 def run_telegram_bot(config, supabase):
-    """Thread içinde asenkron botu başlatmak için senkron sarmalayıcı (wrapper)."""
     logging.info("Telegram Bot thread'i başlatılıyor...")
     try:
-        # Bu thread için yeni bir asenkron döngü oluştur ve yönet
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         loop.run_until_complete(async_telegram_main(config, supabase))
@@ -178,7 +177,7 @@ def run_notifier(config, supabase):
                                f"Stop Loss: `{signal['stop_loss']:.4f}`\n"
                                f"Take Profit: `{signal['take_profit_2R']:.4f}`")
                         for sub in subscribers:
-                            send_telegram_message(token, sub['chat_id'], msg)
+                            send_telegram_message(token, sub['telegram_chat_id'], msg)
                             time.sleep(0.1)
                         supabase.table('signals').update({'notified': True}).eq('id', signal['id']).execute()
                         logging.info(f"Sinyal ID {signal['id']} için bildirimler tamamlandı.")
