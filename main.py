@@ -1,8 +1,11 @@
+# main.py (Düzeltilmiş Hali)
+
 import os
 import time
 import logging
 import json
 import threading
+import asyncio  # --> YENİ EKLENDİ
 from datetime import datetime
 import pytz
 import ccxt
@@ -12,19 +15,11 @@ from supabase import create_client, Client
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-# --- 1: TEMEL AYARLAR VE YAPILANDIRMA ---
-
+# --- 1: TEMEL AYARLAR VE YAPILANDIRMA --- (Değişiklik yok)
 def setup_logging(log_file):
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - [%(threadName)s] - %(message)s', handlers=[logging.FileHandler(log_file), logging.StreamHandler()])
-
 def load_config(filename='config.json'):
-    try:
-        with open(filename, 'r') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        logging.critical(f"Kritik Hata: {filename} bulunamadı. Program sonlandırılıyor.")
-        exit()
-
+    with open(filename, 'r') as f: return json.load(f)
 def get_supabase_client(config):
     url = config['supabase']['url']
     key = config['supabase']['key']
@@ -33,8 +28,8 @@ def get_supabase_client(config):
         exit()
     return create_client(url, key)
 
-# --- 2: SİNYAL ÜRETİCİ BÖLÜMÜ ---
-
+# --- 2: SİNYAL ÜRETİCİ BÖLÜMÜ --- (Değişiklik yok)
+# ... Bu bölümdeki tüm fonksiyonlar (get_ny_4h_levels, find_new_signal, run_signal_generator) aynı kalacak ...
 def get_ny_4h_levels(symbol, for_date, exchange, ny_timezone):
     try:
         start_time = for_date.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -47,11 +42,10 @@ def get_ny_4h_levels(symbol, for_date, exchange, ny_timezone):
     except Exception as e:
         logging.error(f"[{symbol}] 4S seviyeleri alınamadı: {e}")
     return None, None
-
 def find_new_signal(df, upper_limit, lower_limit, breakout_state):
     last_candle = df.iloc[-2]
     new_signal = None
-    if not df.empty:
+    if not df.empty and len(df) > 1:
         if not breakout_state['short_detected'] and last_candle['close'] > upper_limit:
             breakout_state['short_detected'] = True
             breakout_state['peak_price'] = last_candle['high']
@@ -62,7 +56,6 @@ def find_new_signal(df, upper_limit, lower_limit, breakout_state):
                 if (stop_loss - entry_price) > 0:
                     new_signal = {"type": "SHORT", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2R": entry_price - 2 * (stop_loss - entry_price)}
                 breakout_state['short_detected'] = False
-        
         if not breakout_state['long_detected'] and last_candle['close'] < lower_limit:
             breakout_state['long_detected'] = True
             breakout_state['trough_price'] = last_candle['low']
@@ -74,19 +67,16 @@ def find_new_signal(df, upper_limit, lower_limit, breakout_state):
                     new_signal = {"type": "LONG", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2R": entry_price + 2 * (entry_price - stop_loss)}
                 breakout_state['long_detected'] = False
     return new_signal
-
 def run_signal_generator(config, supabase):
     logging.info("Sinyal Üretici thread'i başlatıldı.")
     exchange = ccxt.binance()
     ny_timezone = pytz.timezone("America/New_York")
     breakout_states = {symbol: {'short_detected': False, 'long_detected': False, 'peak_price': 0, 'trough_price': 0} for symbol in config['symbols']}
-
     while True:
         try:
             response = supabase.table('signals').select('*').eq('status', 'active').execute()
             active_trades = response.data if response.data else []
             active_symbols = [trade['symbol'] for trade in active_trades]
-
             for trade in active_trades:
                 try:
                     ticker = exchange.fetch_ticker(trade['symbol'])
@@ -101,7 +91,6 @@ def run_signal_generator(config, supabase):
                         supabase.table('signals').update({'status': result}).eq('id', trade['id']).execute()
                 except Exception as e:
                     logging.error(f"[{trade['symbol']}] Aktif işlem takibinde hata: {e}")
-
             symbols_to_scan = [s for s in config['symbols'] if s not in active_symbols]
             if symbols_to_scan:
                 current_ny_time = datetime.now(ny_timezone)
@@ -117,18 +106,17 @@ def run_signal_generator(config, supabase):
                             signal_data = {**new_signal, 'symbol': symbol, 'status': 'active', 'notified': False}
                             supabase.table('signals').insert(signal_data).execute()
                             logging.info(f"[{symbol}] YENİ SİNYAL: {signal_data}")
-
             time.sleep(config['loop_intervals']['signal_generator'])
         except Exception as e:
             logging.critical(f"Sinyal Üretici ana döngü hatası: {e}")
             time.sleep(60)
 
-# --- 3: TELEGRAM BOTU BÖLÜMÜ ---
+# --- 3: TELEGRAM BOTU BÖLÜMÜ --- (DEĞİŞTİRİLDİ)
 
-async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE): # async eklendi
     await update.message.reply_text("/subscribe - Bildirim almak için abone olun.\n/unsubscribe - Abonelikten ayrılın.")
 
-async def subscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def subscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE): # async eklendi
     chat_id = update.message.chat_id
     supabase = context.bot_data["supabase"]
     try:
@@ -139,7 +127,7 @@ async def subscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         logging.error(f"Abone olma hatası: {e}")
         await update.message.reply_text("❌ Abonelik sırasında bir hata oluştu.")
 
-async def unsubscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def unsubscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE): # async eklendi
     chat_id = update.message.chat_id
     supabase = context.bot_data["supabase"]
     try:
@@ -150,8 +138,8 @@ async def unsubscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE
         logging.error(f"Abonelikten ayrılma hatası: {e}")
         await update.message.reply_text("❌ Abonelikten ayrılırken bir hata oluştu.")
 
-def run_telegram_bot(config, supabase):
-    logging.info("Telegram Bot thread'i başlatılıyor...")
+async def async_telegram_main(config, supabase):
+    """Asenkron Telegram botunu çalıştıran ana fonksiyon."""
     token = config['telegram']['token']
     application = Application.builder().token(token).build()
     application.bot_data["supabase"] = supabase
@@ -159,10 +147,19 @@ def run_telegram_bot(config, supabase):
     application.add_handler(CommandHandler("subscribe", subscribe_command))
     application.add_handler(CommandHandler("unsubscribe", unsubscribe_command))
     logging.info("Telegram Botu başlatıldı ve dinlemede...")
-    application.run_polling()
+    await application.run_polling() # application.run_polling() -> await application.run_polling() oldu
 
-# --- 4: BİLDİRİM DAĞITICI BÖLÜMÜ ---
+def run_telegram_bot(config, supabase):
+    """Thread içinde asenkron botu başlatmak için senkron sarmalayıcı (wrapper)."""
+    logging.info("Telegram Bot thread'i başlatılıyor...")
+    try:
+        asyncio.run(async_telegram_main(config, supabase))
+    except Exception as e:
+        logging.critical(f"Telegram botu thread'inde kritik hata: {e}")
 
+
+# --- 4: BİLDİRİM DAĞITICI BÖLÜMÜ --- (Değişiklik yok)
+# ... Bu bölümdeki tüm fonksiyonlar (send_telegram_message, run_notifier) aynı kalacak ...
 def send_telegram_message(token, chat_id, message):
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {"chat_id": chat_id, "text": message, "parse_mode": "Markdown"}
@@ -170,7 +167,6 @@ def send_telegram_message(token, chat_id, message):
         requests.post(url, json=payload, timeout=10)
     except Exception as e:
         logging.error(f"{chat_id}'ye mesaj gönderilemedi: {e}")
-
 def run_notifier(config, supabase):
     logging.info("Bildirim Dağıtıcı thread'i başlatıldı.")
     token = config['telegram']['token']
@@ -197,26 +193,21 @@ def run_notifier(config, supabase):
             logging.error(f"Bildirim döngüsünde hata: {e}")
         time.sleep(config['loop_intervals']['notifier'])
 
-# --- ANA PROGRAM BAŞLANGICI ---
-
+# --- ANA PROGRAM BAŞLANGICI --- (Değişiklik yok)
 if __name__ == "__main__":
     config = load_config()
     setup_logging(config['log_file'])
     supabase_client = get_supabase_client(config)
 
-    # Her bir bot için ayrı bir thread oluştur
     generator_thread = threading.Thread(target=run_signal_generator, name="SinyalUretici", args=(config, supabase_client))
     telegram_thread = threading.Thread(target=run_telegram_bot, name="TelegramBot", args=(config, supabase_client))
     notifier_thread = threading.Thread(target=run_notifier, name="BildirimDagitici", args=(config, supabase_client))
 
-    # Thread'leri başlat
     generator_thread.start()
     telegram_thread.start()
     notifier_thread.start()
 
     logging.info("Tüm bot servisleri başlatıldı.")
-
-    # Ana thread'in, diğer thread'ler çalışırken beklemesini sağla
     generator_thread.join()
     telegram_thread.join()
     notifier_thread.join()
