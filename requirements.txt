@@ -2,5 +2,5 @@ ccxt
 pandas
 pytz
 requests
-supabase-py
+supabase
 python-telegram-bot==21.0.1
