@@ -1,11 +1,11 @@
-# main.py (Düzeltilmiş Hali)
+# main.py (Son Düzeltmeyle Birlikte Tam Hali)
 
 import os
 import time
 import logging
 import json
 import threading
-import asyncio  # --> YENİ EKLENDİ
+import asyncio
 from datetime import datetime
 import pytz
 import ccxt
@@ -15,7 +15,7 @@ from supabase import create_client, Client
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 
-# --- 1: TEMEL AYARLAR VE YAPILANDIRMA --- (Değişiklik yok)
+# --- 1: TEMEL AYARLAR VE YAPILANDIRMA ---
 def setup_logging(log_file):
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - [%(threadName)s] - %(message)s', handlers=[logging.FileHandler(log_file), logging.StreamHandler()])
 def load_config(filename='config.json'):
@@ -28,8 +28,7 @@ def get_supabase_client(config):
         exit()
     return create_client(url, key)
 
-# --- 2: SİNYAL ÜRETİCİ BÖLÜMÜ --- (Değişiklik yok)
-# ... Bu bölümdeki tüm fonksiyonlar (get_ny_4h_levels, find_new_signal, run_signal_generator) aynı kalacak ...
+# --- 2: SİNYAL ÜRETİCİ BÖLÜMÜ ---
 def get_ny_4h_levels(symbol, for_date, exchange, ny_timezone):
     try:
         start_time = for_date.replace(hour=0, minute=0, second=0, microsecond=0)
@@ -43,29 +42,29 @@ def get_ny_4h_levels(symbol, for_date, exchange, ny_timezone):
         logging.error(f"[{symbol}] 4S seviyeleri alınamadı: {e}")
     return None, None
 def find_new_signal(df, upper_limit, lower_limit, breakout_state):
+    if df.empty or len(df) < 2: return None
     last_candle = df.iloc[-2]
     new_signal = None
-    if not df.empty and len(df) > 1:
-        if not breakout_state['short_detected'] and last_candle['close'] > upper_limit:
-            breakout_state['short_detected'] = True
-            breakout_state['peak_price'] = last_candle['high']
-        elif breakout_state['short_detected']:
-            breakout_state['peak_price'] = max(breakout_state['peak_price'], last_candle['high'])
-            if last_candle['close'] < upper_limit:
-                entry_price, stop_loss = last_candle['close'], breakout_state['peak_price']
-                if (stop_loss - entry_price) > 0:
-                    new_signal = {"type": "SHORT", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2R": entry_price - 2 * (stop_loss - entry_price)}
-                breakout_state['short_detected'] = False
-        if not breakout_state['long_detected'] and last_candle['close'] < lower_limit:
-            breakout_state['long_detected'] = True
-            breakout_state['trough_price'] = last_candle['low']
-        elif breakout_state['long_detected']:
-            breakout_state['trough_price'] = min(breakout_state['trough_price'], last_candle['low'])
-            if last_candle['close'] > lower_limit:
-                entry_price, stop_loss = last_candle['close'], breakout_state['trough_price']
-                if (entry_price - stop_loss) > 0:
-                    new_signal = {"type": "LONG", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2R": entry_price + 2 * (entry_price - stop_loss)}
-                breakout_state['long_detected'] = False
+    if not breakout_state['short_detected'] and last_candle['close'] > upper_limit:
+        breakout_state['short_detected'] = True
+        breakout_state['peak_price'] = last_candle['high']
+    elif breakout_state['short_detected']:
+        breakout_state['peak_price'] = max(breakout_state['peak_price'], last_candle['high'])
+        if last_candle['close'] < upper_limit:
+            entry_price, stop_loss = last_candle['close'], breakout_state['peak_price']
+            if (stop_loss - entry_price) > 0:
+                new_signal = {"type": "SHORT", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2R": entry_price - 2 * (stop_loss - entry_price)}
+            breakout_state['short_detected'] = False
+    if not breakout_state['long_detected'] and last_candle['close'] < lower_limit:
+        breakout_state['long_detected'] = True
+        breakout_state['trough_price'] = last_candle['low']
+    elif breakout_state['long_detected']:
+        breakout_state['trough_price'] = min(breakout_state['trough_price'], last_candle['low'])
+        if last_candle['close'] > lower_limit:
+            entry_price, stop_loss = last_candle['close'], breakout_state['trough_price']
+            if (entry_price - stop_loss) > 0:
+                new_signal = {"type": "LONG", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2R": entry_price + 2 * (entry_price - stop_loss)}
+            breakout_state['long_detected'] = False
     return new_signal
 def run_signal_generator(config, supabase):
     logging.info("Sinyal Üretici thread'i başlatıldı.")
@@ -98,7 +97,6 @@ def run_signal_generator(config, supabase):
                     for symbol in symbols_to_scan:
                         upper_limit, lower_limit = get_ny_4h_levels(symbol, current_ny_time, exchange, ny_timezone)
                         if not upper_limit: continue
-                        
                         ohlcv = exchange.fetch_ohlcv(symbol, '5m', limit=10)
                         df = pd.DataFrame(ohlcv, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
                         new_signal = find_new_signal(df, upper_limit, lower_limit, breakout_states[symbol])
@@ -111,12 +109,10 @@ def run_signal_generator(config, supabase):
             logging.critical(f"Sinyal Üretici ana döngü hatası: {e}")
             time.sleep(60)
 
-# --- 3: TELEGRAM BOTU BÖLÜMÜ --- (DEĞİŞTİRİLDİ)
-
-async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE): # async eklendi
+# --- 3: TELEGRAM BOTU BÖLÜMÜ ---
+async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("/subscribe - Bildirim almak için abone olun.\n/unsubscribe - Abonelikten ayrılın.")
-
-async def subscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE): # async eklendi
+async def subscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.message.chat_id
     supabase = context.bot_data["supabase"]
     try:
@@ -126,8 +122,7 @@ async def subscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception as e:
         logging.error(f"Abone olma hatası: {e}")
         await update.message.reply_text("❌ Abonelik sırasında bir hata oluştu.")
-
-async def unsubscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE): # async eklendi
+async def unsubscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.message.chat_id
     supabase = context.bot_data["supabase"]
     try:
@@ -137,9 +132,7 @@ async def unsubscribe_command(update: Update, context: ContextTypes.DEFAULT_TYPE
     except Exception as e:
         logging.error(f"Abonelikten ayrılma hatası: {e}")
         await update.message.reply_text("❌ Abonelikten ayrılırken bir hata oluştu.")
-
 async def async_telegram_main(config, supabase):
-    """Asenkron Telegram botunu çalıştıran ana fonksiyon."""
     token = config['telegram']['token']
     application = Application.builder().token(token).build()
     application.bot_data["supabase"] = supabase
@@ -147,19 +140,19 @@ async def async_telegram_main(config, supabase):
     application.add_handler(CommandHandler("subscribe", subscribe_command))
     application.add_handler(CommandHandler("unsubscribe", unsubscribe_command))
     logging.info("Telegram Botu başlatıldı ve dinlemede...")
-    await application.run_polling() # application.run_polling() -> await application.run_polling() oldu
-
+    await application.run_polling()
 def run_telegram_bot(config, supabase):
     """Thread içinde asenkron botu başlatmak için senkron sarmalayıcı (wrapper)."""
     logging.info("Telegram Bot thread'i başlatılıyor...")
     try:
-        asyncio.run(async_telegram_main(config, supabase))
+        # Bu thread için yeni bir asenkron döngü oluştur ve yönet
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        loop.run_until_complete(async_telegram_main(config, supabase))
     except Exception as e:
-        logging.critical(f"Telegram botu thread'inde kritik hata: {e}")
+        logging.critical(f"Telegram botu thread'inde kritik hata: {e}", exc_info=True)
 
-
-# --- 4: BİLDİRİM DAĞITICI BÖLÜMÜ --- (Değişiklik yok)
-# ... Bu bölümdeki tüm fonksiyonlar (send_telegram_message, run_notifier) aynı kalacak ...
+# --- 4: BİLDİRİM DAĞITICI BÖLÜMÜ ---
 def send_telegram_message(token, chat_id, message):
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = {"chat_id": chat_id, "text": message, "parse_mode": "Markdown"}
@@ -185,7 +178,7 @@ def run_notifier(config, supabase):
                                f"Stop Loss: `{signal['stop_loss']:.4f}`\n"
                                f"Take Profit: `{signal['take_profit_2R']:.4f}`")
                         for sub in subscribers:
-                            send_telegram_message(token, sub['telegram_chat_id'], msg)
+                            send_telegram_message(token, sub['chat_id'], msg)
                             time.sleep(0.1)
                         supabase.table('signals').update({'notified': True}).eq('id', signal['id']).execute()
                         logging.info(f"Sinyal ID {signal['id']} için bildirimler tamamlandı.")
@@ -193,20 +186,17 @@ def run_notifier(config, supabase):
             logging.error(f"Bildirim döngüsünde hata: {e}")
         time.sleep(config['loop_intervals']['notifier'])
 
-# --- ANA PROGRAM BAŞLANGICI --- (Değişiklik yok)
+# --- ANA PROGRAM BAŞLANGICI ---
 if __name__ == "__main__":
     config = load_config()
     setup_logging(config['log_file'])
     supabase_client = get_supabase_client(config)
-
     generator_thread = threading.Thread(target=run_signal_generator, name="SinyalUretici", args=(config, supabase_client))
     telegram_thread = threading.Thread(target=run_telegram_bot, name="TelegramBot", args=(config, supabase_client))
     notifier_thread = threading.Thread(target=run_notifier, name="BildirimDagitici", args=(config, supabase_client))
-
     generator_thread.start()
     telegram_thread.start()
     notifier_thread.start()
-
     logging.info("Tüm bot servisleri başlatıldı.")
     generator_thread.join()
     telegram_thread.join()
