@@ -1,4 +1,4 @@
-# main.py (Nihai ve Stabil Versiyon)
+# main.py (İsimlendirme Düzeltmesi Yapılmış Nihai Versiyon)
 
 import os
 import time
@@ -41,6 +41,7 @@ def get_ny_4h_levels(symbol, for_date, exchange, ny_timezone):
     except Exception as e:
         logging.error(f"[{symbol}] 4S seviyeleri alınamadı: {e}")
     return None, None
+
 def find_new_signal(df, upper_limit, lower_limit, breakout_state):
     if df.empty or len(df) < 2: return None
     last_candle = df.iloc[-2]
@@ -53,7 +54,9 @@ def find_new_signal(df, upper_limit, lower_limit, breakout_state):
         if last_candle['close'] < upper_limit:
             entry_price, stop_loss = last_candle['close'], breakout_state['peak_price']
             if (stop_loss - entry_price) > 0:
-                new_signal = {"type": "SHORT", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2R": entry_price - 2 * (stop_loss - entry_price)}
+                # DÜZELTME 1:
+                take_profit = entry_price - 2 * (stop_loss - entry_price)
+                new_signal = {"type": "SHORT", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2r": take_profit}
             breakout_state['short_detected'] = False
     if not breakout_state['long_detected'] and last_candle['close'] < lower_limit:
         breakout_state['long_detected'] = True
@@ -63,9 +66,12 @@ def find_new_signal(df, upper_limit, lower_limit, breakout_state):
         if last_candle['close'] > lower_limit:
             entry_price, stop_loss = last_candle['close'], breakout_state['trough_price']
             if (entry_price - stop_loss) > 0:
-                new_signal = {"type": "LONG", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2R": entry_price + 2 * (entry_price - stop_loss)}
+                # DÜZELTME 2:
+                take_profit = entry_price + 2 * (entry_price - stop_loss)
+                new_signal = {"type": "LONG", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2r": take_profit}
             breakout_state['long_detected'] = False
     return new_signal
+
 def run_signal_generator(config, supabase):
     logging.info("Sinyal Üretici thread'i başlatıldı.")
     exchange = ccxt.binance()
@@ -73,7 +79,8 @@ def run_signal_generator(config, supabase):
     breakout_states = {symbol: {'short_detected': False, 'long_detected': False, 'peak_price': 0, 'trough_price': 0} for symbol in config['symbols']}
     while True:
         try:
-            response = supabase.table('signals').select('id, symbol, type, stop_loss, take_profit_2R').eq('status', 'active').execute()
+            # DÜZELTME 3:
+            response = supabase.table('signals').select('id, symbol, type, stop_loss, take_profit_2r').eq('status', 'active').execute()
             active_trades = response.data if response.data else []
             active_symbols = [trade['symbol'] for trade in active_trades]
             for trade in active_trades:
@@ -82,9 +89,9 @@ def run_signal_generator(config, supabase):
                     last_price = ticker['last']
                     result = None
                     if trade['type'] == 'SHORT' and last_price >= trade['stop_loss']: result = 'sl_hit'
-                    if trade['type'] == 'SHORT' and last_price <= trade['take_profit_2R']: result = 'tp_hit'
+                    if trade['type'] == 'SHORT' and last_price <= trade['take_profit_2r']: result = 'tp_hit'
                     if trade['type'] == 'LONG' and last_price <= trade['stop_loss']: result = 'sl_hit'
-                    if trade['type'] == 'LONG' and last_price >= trade['take_profit_2R']: result = 'tp_hit'
+                    if trade['type'] == 'LONG' and last_price >= trade['take_profit_2r']: result = 'tp_hit'
                     if result:
                         logging.info(f"[{trade['symbol']}] POZİSYON KAPANDI: {result}")
                         supabase.table('signals').update({'status': result}).eq('id', trade['id']).execute()
@@ -165,18 +172,20 @@ def run_notifier(config, supabase):
     token = config['telegram']['token']
     while True:
         try:
-            response = supabase.table('signals').select('id, symbol, type, entry_price, stop_loss, take_profit_2R').eq('status', 'active').eq('notified', False).execute()
+            # DÜZELTME 4:
+            response = supabase.table('signals').select('id, symbol, type, entry_price, stop_loss, take_profit_2r').eq('status', 'active').eq('notified', False).execute()
             new_signals = response.data
             if new_signals:
                 sub_response = supabase.table('subscribers').select('telegram_chat_id').eq('is_active', True).execute()
                 subscribers = sub_response.data
                 if subscribers:
                     for signal in new_signals:
+                        # DÜZELTME 5:
                         msg = (f"🚨 YENİ SİNYAL: *{signal['symbol']}*\n"
                                f"Yön: *{signal['type']}*\n"
                                f"Giriş Fiyatı: `{signal['entry_price']:.4f}`\n"
                                f"Stop Loss: `{signal['stop_loss']:.4f}`\n"
-                               f"Take Profit: `{signal['take_profit_2R']:.4f}`")
+                               f"Take Profit: `{signal['take_profit_2r']:.4f}`")
                         for sub in subscribers:
                             send_telegram_message(token, sub['telegram_chat_id'], msg)
                             time.sleep(0.1)

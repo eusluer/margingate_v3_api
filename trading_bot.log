@@ -123,3 +123,62 @@
 2025-09-03 11:47:33,420 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active&notified=eq.False "HTTP/2 200 OK"
 2025-09-03 11:47:36,493 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
 2025-09-03 11:47:38,192 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:57:23,705 - INFO - [SinyalUretici] - Sinyal Üretici thread'i başlatıldı.
+2025-09-03 11:57:23,705 - INFO - [TelegramBot] - Telegram Bot thread'i başlatılıyor...
+2025-09-03 11:57:23,705 - INFO - [BildirimDagitici] - Bildirim Dağıtıcı thread'i başlatıldı.
+2025-09-03 11:57:23,705 - INFO - [MainThread] - Tüm bot servisleri başlatıldı.
+2025-09-03 11:57:23,914 - INFO - [TelegramBot] - HTTP Request: POST https://api.telegram.org/bot8216849159:AAFCsDsS9k97NuaTuU1l7i20SDRhLHgiuTA/getMe "HTTP/1.1 200 OK"
+2025-09-03 11:57:23,914 - INFO - [TelegramBot] - Telegram Botu başlatıldı ve dinlemede...
+2025-09-03 11:57:23,914 - INFO - [TelegramBot] - Application started
+2025-09-03 11:57:23,914 - WARNING - [TelegramBot] - Fetching updates got a asyncio.CancelledError. Ignoring as this task may onlybe closed via `Application.stop`.
+2025-09-03 11:57:23,927 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2R&status=eq.active "HTTP/2 400 Bad Request"
+2025-09-03 11:57:23,927 - CRITICAL - [SinyalUretici] - Sinyal Üretici ana döngü hatası: {'message': 'column signals.take_profit_2R does not exist', 'code': '42703', 'hint': 'Perhaps you meant to reference the column "signals.take_profit_2r".', 'details': None}
+Traceback (most recent call last):
+  File "/Users/enesusluer/Desktop/margingate_v3_api/main.py", line 76, in run_signal_generator
+    response = supabase.table('signals').select('id, symbol, type, stop_loss, take_profit_2R').eq('status', 'active').execute()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/postgrest/_sync/request_builder.py", line 78, in execute
+    raise APIError(dict(json_obj))
+postgrest.exceptions.APIError: {'message': 'column signals.take_profit_2R does not exist', 'code': '42703', 'hint': 'Perhaps you meant to reference the column "signals.take_profit_2r".', 'details': None}
+2025-09-03 11:57:23,928 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2R&status=eq.active&notified=eq.False "HTTP/2 400 Bad Request"
+2025-09-03 11:57:23,929 - ERROR - [BildirimDagitici] - Bildirim döngüsünde hata: {'message': 'column signals.take_profit_2R does not exist', 'code': '42703', 'hint': 'Perhaps you meant to reference the column "signals.take_profit_2r".', 'details': None}
+2025-09-03 11:57:44,057 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2R&status=eq.active&notified=eq.False "HTTP/2 400 Bad Request"
+2025-09-03 11:57:44,058 - ERROR - [BildirimDagitici] - Bildirim döngüsünde hata: {'message': 'column signals.take_profit_2R does not exist', 'code': '42703', 'hint': 'Perhaps you meant to reference the column "signals.take_profit_2r".', 'details': None}
+2025-09-03 11:58:04,203 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2R&status=eq.active&notified=eq.False "HTTP/2 400 Bad Request"
+2025-09-03 11:58:04,204 - ERROR - [BildirimDagitici] - Bildirim döngüsünde hata: {'message': 'column signals.take_profit_2R does not exist', 'code': '42703', 'hint': 'Perhaps you meant to reference the column "signals.take_profit_2r".', 'details': None}
+2025-09-03 11:58:24,210 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2R&status=eq.active "HTTP/2 400 Bad Request"
+2025-09-03 11:58:24,213 - CRITICAL - [SinyalUretici] - Sinyal Üretici ana döngü hatası: {'message': 'column signals.take_profit_2R does not exist', 'code': '42703', 'hint': 'Perhaps you meant to reference the column "signals.take_profit_2r".', 'details': None}
+Traceback (most recent call last):
+  File "/Users/enesusluer/Desktop/margingate_v3_api/main.py", line 76, in run_signal_generator
+    response = supabase.table('signals').select('id, symbol, type, stop_loss, take_profit_2R').eq('status', 'active').execute()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/postgrest/_sync/request_builder.py", line 78, in execute
+    raise APIError(dict(json_obj))
+postgrest.exceptions.APIError: {'message': 'column signals.take_profit_2R does not exist', 'code': '42703', 'hint': 'Perhaps you meant to reference the column "signals.take_profit_2r".', 'details': None}
+2025-09-03 11:58:24,323 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2R&status=eq.active&notified=eq.False "HTTP/2 400 Bad Request"
+2025-09-03 11:58:24,324 - ERROR - [BildirimDagitici] - Bildirim döngüsünde hata: {'message': 'column signals.take_profit_2R does not exist', 'code': '42703', 'hint': 'Perhaps you meant to reference the column "signals.take_profit_2r".', 'details': None}
+2025-09-03 11:58:44,465 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2R&status=eq.active&notified=eq.False "HTTP/2 400 Bad Request"
+2025-09-03 11:58:44,468 - ERROR - [BildirimDagitici] - Bildirim döngüsünde hata: {'message': 'column signals.take_profit_2R does not exist', 'code': '42703', 'hint': 'Perhaps you meant to reference the column "signals.take_profit_2r".', 'details': None}
+2025-09-03 11:59:04,609 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2R&status=eq.active&notified=eq.False "HTTP/2 400 Bad Request"
+2025-09-03 11:59:04,611 - ERROR - [BildirimDagitici] - Bildirim döngüsünde hata: {'message': 'column signals.take_profit_2R does not exist', 'code': '42703', 'hint': 'Perhaps you meant to reference the column "signals.take_profit_2r".', 'details': None}
+2025-09-03 11:59:25,227 - INFO - [SinyalUretici] - Sinyal Üretici thread'i başlatıldı.
+2025-09-03 11:59:25,227 - INFO - [TelegramBot] - Telegram Bot thread'i başlatılıyor...
+2025-09-03 11:59:25,227 - INFO - [BildirimDagitici] - Bildirim Dağıtıcı thread'i başlatıldı.
+2025-09-03 11:59:25,227 - INFO - [MainThread] - Tüm bot servisleri başlatıldı.
+2025-09-03 11:59:25,410 - INFO - [TelegramBot] - HTTP Request: POST https://api.telegram.org/bot8216849159:AAFCsDsS9k97NuaTuU1l7i20SDRhLHgiuTA/getMe "HTTP/1.1 200 OK"
+2025-09-03 11:59:25,410 - INFO - [TelegramBot] - Telegram Botu başlatıldı ve dinlemede...
+2025-09-03 11:59:25,410 - INFO - [TelegramBot] - Application started
+2025-09-03 11:59:25,410 - WARNING - [TelegramBot] - Fetching updates got a asyncio.CancelledError. Ignoring as this task may onlybe closed via `Application.stop`.
+2025-09-03 11:59:25,444 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:59:25,472 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2r&status=eq.active&notified=eq.False "HTTP/2 200 OK"
+2025-09-03 11:59:45,710 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2r&status=eq.active&notified=eq.False "HTTP/2 200 OK"
+2025-09-03 12:00:05,835 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2r&status=eq.active&notified=eq.False "HTTP/2 200 OK"
+2025-09-03 12:00:25,964 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2r&status=eq.active&notified=eq.False "HTTP/2 200 OK"
+2025-09-03 12:00:28,608 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-03 12:00:46,086 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2r&status=eq.active&notified=eq.False "HTTP/2 200 OK"
+2025-09-03 12:01:06,229 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2r&status=eq.active&notified=eq.False "HTTP/2 200 OK"
+2025-09-03 12:01:26,416 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2r&status=eq.active&notified=eq.False "HTTP/2 200 OK"
+2025-09-03 12:01:29,798 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-03 12:01:46,539 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2r&status=eq.active&notified=eq.False "HTTP/2 200 OK"
+2025-09-03 12:02:06,690 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2r&status=eq.active&notified=eq.False "HTTP/2 200 OK"
+2025-09-03 12:02:26,819 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2r&status=eq.active&notified=eq.False "HTTP/2 200 OK"
+2025-09-03 12:02:31,091 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-03 12:02:47,091 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Centry_price%2Cstop_loss%2Ctake_profit_2r&status=eq.active&notified=eq.False "HTTP/2 200 OK"
