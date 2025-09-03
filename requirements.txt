@@ -1,0 +1,6 @@
+ccxt
+pandas
+pytz
+requests
+supabase-py
+python-telegram-bot==21.0.1

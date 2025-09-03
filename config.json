@@ -1,0 +1,18 @@
+{
+    "symbols": [
+      "BTC/USDT",
+      "ETH/USDT"
+    ],
+    "log_file": "trading_bot.log",
+    "loop_intervals": {
+      "signal_generator": 60,
+      "notifier": 20
+    },
+    "supabase": {
+      "url": "https://muwqydzmponlsoagasnw.supabase.co",
+      "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im11d3F5ZHptcG9ubHNvYWdhc253Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyMDgzNzMsImV4cCI6MjA2ODc4NDM3M30.qvjVdeldF9xCHTyjd8u4AStg2cKCRpTXFmJr62wAbB0"
+    },
+    "telegram": {
+      "token": "8216849159:AAFCsDsS9k97NuaTuU1l7i20SDRhLHgiuTA"
+    }
+  }

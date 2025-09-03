@@ -1,0 +1,17 @@
+2025-09-03 10:59:33,848 - CRITICAL - Supabase URL veya Key config.json içinde ayarlanmamış!
+2025-09-03 11:03:40,078 - INFO - Sinyal Üretici Başlatıldı.
+2025-09-03 11:03:40,783 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:04:44,244 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:05:45,655 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:06:46,998 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:07:48,402 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:08:49,771 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:09:51,195 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:10:47,514 - INFO - Sinyal Üretici Başlatıldı.
+2025-09-03 11:10:47,924 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:11:51,260 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:12:52,645 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:13:54,172 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:14:55,495 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:15:57,071 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:16:58,716 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
