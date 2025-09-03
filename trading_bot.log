@@ -15,3 +15,27 @@
 2025-09-03 11:14:55,495 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
 2025-09-03 11:15:57,071 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
 2025-09-03 11:16:58,716 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:17:59,958 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:19:01,297 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:20:02,728 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:21:04,116 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:22:05,572 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:23:07,077 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:24:08,431 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:25:09,832 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:25:10,551 - INFO - HTTP Request: POST https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals "HTTP/2 400 Bad Request"
+2025-09-03 11:25:10,555 - CRITICAL - Ana döngüde kritik hata: {'message': "Could not find the 'take_profit_2R' column of 'signals' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}
+2025-09-03 11:26:10,809 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:27:12,146 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:28:13,315 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:29:14,576 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:30:03,934 - INFO - [SinyalUretici] - Sinyal Üretici thread'i başlatıldı.
+2025-09-03 11:30:04,035 - INFO - [TelegramBot] - Telegram Bot thread'i başlatılıyor...
+2025-09-03 11:30:04,086 - INFO - [BildirimDagitici] - Bildirim Dağıtıcı thread'i başlatıldı.
+2025-09-03 11:30:04,103 - INFO - [MainThread] - Tüm bot servisleri başlatıldı.
+2025-09-03 11:30:04,694 - INFO - [TelegramBot] - Telegram Botu başlatıldı ve dinlemede...
+2025-09-03 11:30:04,791 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active&notified=eq.False "HTTP/2 200 OK"
+2025-09-03 11:30:04,904 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:30:16,211 - INFO - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active "HTTP/2 200 OK"
+2025-09-03 11:30:25,200 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active&notified=eq.False "HTTP/2 200 OK"
+2025-09-03 11:30:45,327 - INFO - [BildirimDagitici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=%2A&status=eq.active&notified=eq.False "HTTP/2 200 OK"
