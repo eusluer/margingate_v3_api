@@ -1,0 +1,9 @@
+2025-09-04 10:53:47,392 - INFO - [SinyalUretici] - Perpetual Sinyal Üretici Başlatıldı.
+2025-09-04 10:53:47,392 - INFO - [SinyalUretici] - Takip edilen semboller: ['BTC/USDT', 'ETH/USDT']
+2025-09-04 10:53:47,510 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r%2Centry_price&status=eq.active "HTTP/2 200 OK"
+2025-09-04 10:54:47,746 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r%2Centry_price&status=eq.active "HTTP/2 200 OK"
+2025-09-04 10:55:48,000 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r%2Centry_price&status=eq.active "HTTP/2 200 OK"
+2025-09-04 10:56:48,126 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r%2Centry_price&status=eq.active "HTTP/2 200 OK"
+2025-09-04 10:57:37,007 - INFO - [SinyalUretici] - Perpetual Sinyal Üretici Başlatıldı.
+2025-09-04 10:57:37,007 - INFO - [SinyalUretici] - Takip edilen semboller: ['BTC/USDT', 'ETH/USDT']
+2025-09-04 10:57:37,123 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r%2Centry_price&status=eq.active "HTTP/2 200 OK"
