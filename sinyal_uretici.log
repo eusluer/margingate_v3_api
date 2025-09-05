@@ -9,3 +9,407 @@
 2025-09-04 10:57:37,123 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r%2Centry_price&status=eq.active "HTTP/2 200 OK"
 2025-09-04 11:02:14,112 - INFO - [SinyalUretici] - Sinyal Üretici Başlatıldı.
 2025-09-04 11:02:14,257 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 11:03:17,404 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 11:04:18,092 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 11:05:18,880 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 11:06:19,598 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 11:07:20,370 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 11:08:21,131 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 11:09:21,909 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 11:25:35,580 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 11:25:45,587 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 11:42:11,889 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 11:42:21,895 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 12:14:14,328 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 12:14:24,331 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 12:30:50,876 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 12:31:00,882 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 12:50:17,262 - CRITICAL - [SinyalUretici] - Ana döngüde kritik hata: [Errno 54] Connection reset by peer
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 187, in handle_request
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 150, in handle_request
+    status, headers = self._receive_response(
+                      ~~~~~~~~~~~~~~~~~~~~~~^
+        request=request, stream_id=stream_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 294, in _receive_response
+    event = self._receive_stream_event(request, stream_id)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 336, in _receive_stream_event
+    self._receive_events(request, stream_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 364, in _receive_events
+    events = self._read_incoming_data(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 455, in _read_incoming_data
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 441, in _read_incoming_data
+    data = self._network_stream.read(self.READ_NUM_BYTES, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 126, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadError: [Errno 54] Connection reset by peer
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/enesusluer/Desktop/margingate_v3_api/sinyal_uretici.py", line 73, in main
+    response = supabase.table('signals').select('id, symbol, type, stop_loss, take_profit_2r').eq('status', 'active').execute()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/postgrest/_sync/request_builder.py", line 57, in execute
+    r = self.session.request(
+        self.http_method,
+    ...<3 lines>...
+        headers=self.headers,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadError: [Errno 54] Connection reset by peer
+2025-09-04 13:07:29,221 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 13:10:35,814 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 13:27:02,208 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 13:29:15,523 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 14:01:07,639 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 14:01:17,647 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 14:11:55,403 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 14:27:30,367 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 14:43:56,183 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 14:44:06,189 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 15:00:14,278 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 15:05:36,466 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 15:28:47,874 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 15:28:57,880 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 15:45:23,575 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 16:00:58,544 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 16:13:27,565 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 16:13:37,571 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 16:29:54,092 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 16:30:04,090 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 16:46:31,584 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 16:46:41,588 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 17:06:42,860 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 17:14:21,557 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 17:30:24,524 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 17:30:34,529 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 17:47:00,016 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 18:02:35,318 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 18:15:31,211 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 18:15:41,217 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 18:36:13,928 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 18:36:23,935 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 18:52:45,094 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 18:52:55,753 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 19:16:25,855 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 19:16:35,865 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 19:33:01,347 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 19:33:11,353 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 19:49:45,546 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 20:05:19,830 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 20:17:39,655 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 20:17:49,661 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 20:34:15,902 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 20:49:46,271 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 21:06:14,421 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:06:24,427 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 21:18:48,777 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:18:58,783 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 21:39:18,883 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:48:27,587 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 21:49:28,187 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:50:29,010 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:51:29,798 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:52:30,544 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:53:31,365 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:54:32,092 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:55:32,752 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:56:33,515 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:57:34,173 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:58:34,890 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 21:59:35,560 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 22:00:36,214 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 22:01:37,076 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 22:02:37,845 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 22:03:38,612 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 22:20:14,933 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 22:20:24,939 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 22:36:51,247 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 22:52:27,013 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 23:08:40,433 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 23:08:50,437 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 23:40:42,564 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 23:40:52,566 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-04 23:56:55,587 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-04 23:57:05,595 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 00:21:16,218 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 00:21:26,225 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 00:37:52,506 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 00:42:48,796 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 00:59:15,176 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 00:59:25,181 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 01:06:04,173 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 01:06:14,183 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 01:22:40,549 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 01:22:50,557 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 01:54:42,637 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 01:54:52,646 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 02:10:59,995 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 02:26:34,875 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 02:43:01,191 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 02:43:11,192 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 02:59:36,810 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 02:59:46,815 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 03:31:37,510 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 03:31:47,512 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 03:48:03,738 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 03:48:13,742 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 04:20:05,912 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 04:20:15,925 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 04:36:19,422 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 04:51:55,085 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 05:08:21,472 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 05:08:31,479 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 05:24:57,986 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 05:40:33,148 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 05:56:58,641 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 05:57:08,644 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 06:13:34,232 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 06:13:44,240 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 06:45:36,339 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 06:45:46,343 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 07:02:12,678 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 07:02:22,684 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 07:34:14,696 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 07:34:24,702 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 07:50:50,247 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 07:51:00,251 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 08:22:52,332 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 08:23:02,335 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 08:39:28,171 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 08:46:32,935 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 08:56:12,108 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 08:56:22,110 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 09:12:47,571 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 09:15:38,824 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 09:47:31,107 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 09:47:41,114 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 10:03:55,255 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 10:19:30,227 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 10:35:55,742 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 10:36:05,749 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 10:48:01,500 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 11:19:40,322 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 11:19:50,328 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 11:36:16,892 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 11:36:26,899 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 11:49:07,199 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 12:04:40,383 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 12:21:07,612 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 12:21:17,614 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 12:37:54,223 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 12:38:04,228 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 13:05:51,499 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 13:06:01,502 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 13:22:28,060 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 13:22:38,068 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 13:50:34,314 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 13:50:44,319 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 14:07:02,157 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 14:07:12,168 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 14:38:38,822 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 14:38:48,822 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 14:52:00,324 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 14:52:10,330 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 15:52:47,902 - CRITICAL - [SinyalUretici] - Ana döngüde kritik hata: The read operation timed out
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_transports/default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/connection.py", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 187, in handle_request
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 150, in handle_request
+    status, headers = self._receive_response(
+                      ~~~~~~~~~~~~~~~~~~~~~~^
+        request=request, stream_id=stream_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 294, in _receive_response
+    event = self._receive_stream_event(request, stream_id)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 336, in _receive_stream_event
+    self._receive_events(request, stream_id)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 364, in _receive_events
+    events = self._read_incoming_data(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 455, in _read_incoming_data
+    raise exc
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_sync/http2.py", line 441, in _read_incoming_data
+    data = self._network_stream.read(self.READ_NUM_BYTES, timeout)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_backends/sync.py", line 126, in read
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/enesusluer/Desktop/margingate_v3_api/sinyal_uretici.py", line 73, in main
+    response = supabase.table('signals').select('id, symbol, type, stop_loss, take_profit_2r').eq('status', 'active').execute()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/postgrest/_sync/request_builder.py", line 57, in execute
+    r = self.session.request(
+        self.http_method,
+    ...<3 lines>...
+        headers=self.headers,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_transports/default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout: The read operation timed out
+2025-09-05 16:09:27,726 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 16:09:37,733 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 16:28:43,417 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 16:28:53,425 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 16:45:27,108 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 16:53:34,969 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 17:09:01,566 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 17:09:11,563 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 17:25:37,926 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 17:41:09,311 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 17:41:10,178 - INFO - [SinyalUretici] - HTTP Request: POST https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals "HTTP/2 201 Created"
+2025-09-05 17:41:10,179 - INFO - [SinyalUretici] - [BTC/USDT] YENİ SİNYAL: {'type': 'SHORT', 'entry_price': 110750.0, 'stop_loss': 113278.81, 'take_profit_2r': 105692.38, 'symbol': 'BTC/USDT', 'status': 'active', 'notified': False}
+2025-09-05 17:54:32,978 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 17:54:42,983 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 18:12:21,245 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 18:12:31,248 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 18:44:23,878 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 18:44:33,885 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 18:55:41,425 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 18:55:51,429 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 19:11:55,457 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 19:12:05,462 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 19:31:28,628 - ERROR - [SinyalUretici] - [BTC/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT
+2025-09-05 19:53:20,738 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 20:11:59,218 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 20:12:09,225 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 20:28:34,715 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 20:28:44,720 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 20:57:38,420 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 20:57:48,425 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 21:14:14,193 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 21:14:24,203 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 21:46:15,346 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 21:46:25,365 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 21:59:00,855 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 21:59:10,860 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 22:20:03,412 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 22:37:19,468 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 22:52:55,192 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 22:59:46,892 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 22:59:56,897 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 23:16:22,477 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 23:31:58,248 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-05 23:48:30,879 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-05 23:48:40,889 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-06 00:00:47,231 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 00:00:57,237 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-06 00:17:24,041 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 00:32:58,515 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-06 00:49:24,028 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 00:49:34,037 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-06 01:06:00,405 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:08:42,995 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-06 01:19:23,725 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:19:33,717 - ERROR - [SinyalUretici] - [ETH/USDT] Aktif işlem takibinde hata: binance GET https://api.binance.com/api/v3/ticker/24hr?symbol=ETHUSDT
+2025-09-06 01:20:34,127 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:21:34,882 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:22:36,171 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:23:37,395 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:24:38,744 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:25:40,185 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:26:42,103 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:27:43,317 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:28:44,590 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:29:46,072 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:30:47,326 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"
+2025-09-06 01:31:48,582 - INFO - [SinyalUretici] - HTTP Request: GET https://muwqydzmponlsoagasnw.supabase.co/rest/v1/signals?select=id%2Csymbol%2Ctype%2Cstop_loss%2Ctake_profit_2r&status=eq.active "HTTP/2 200 OK"

@@ -1,4 +1,4 @@
-# sinyal_uretici.py
+# sinyal_uretici.py (Perpetual Futures + Kırılım Uyarısı)
 
 import os
 import time
@@ -33,30 +33,44 @@ def get_ny_4h_levels(symbol, for_date, exchange, ny_timezone):
     except Exception as e:
         logging.error(f"[{symbol}] 4S seviyeleri alınamadı: {e}")
     return None, None
-def find_new_signal(df, upper_limit, lower_limit, breakout_state):
+
+def find_events(df, upper_limit, lower_limit, breakout_state, symbol, supabase):
     if df.empty or len(df) < 2: return None
     last_candle = df.iloc[-2]
     new_signal = None
+
+    # Short Sinyal ve Kırılım Tespiti
     if not breakout_state['short_detected'] and last_candle['close'] > upper_limit:
         breakout_state['short_detected'] = True
         breakout_state['peak_price'] = last_candle['high']
+        # YENİ: Kırılım uyarısını veritabanına kaydet
+        alert_data = {'symbol': symbol, 'type': 'breakout_up', 'price': last_candle['close']}
+        supabase.table('alerts').insert(alert_data).execute()
+        logging.info(f"[{symbol}] YUKARI YÖNLÜ KIRILIM TESPİT EDİLDİ: {alert_data}")
     elif breakout_state['short_detected']:
         breakout_state['peak_price'] = max(breakout_state['peak_price'], last_candle['high'])
         if last_candle['close'] < upper_limit:
             entry_price, stop_loss = last_candle['close'], breakout_state['peak_price']
             if (stop_loss - entry_price) > 0:
                 new_signal = {"type": "SHORT", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2r": entry_price - 2 * (stop_loss - entry_price)}
-            breakout_state['short_detected'] = False
+            breakout_state['short_detected'] = False # Durumu sıfırla
+    
+    # Long Sinyal ve Kırılım Tespiti
     if not breakout_state['long_detected'] and last_candle['close'] < lower_limit:
         breakout_state['long_detected'] = True
         breakout_state['trough_price'] = last_candle['low']
+        # YENİ: Kırılım uyarısını veritabanına kaydet
+        alert_data = {'symbol': symbol, 'type': 'breakdown_down', 'price': last_candle['close']}
+        supabase.table('alerts').insert(alert_data).execute()
+        logging.info(f"[{symbol}] AŞAĞI YÖNLÜ KIRILIM TESPİT EDİLDİ: {alert_data}")
     elif breakout_state['long_detected']:
         breakout_state['trough_price'] = min(breakout_state['trough_price'], last_candle['low'])
         if last_candle['close'] > lower_limit:
             entry_price, stop_loss = last_candle['close'], breakout_state['trough_price']
             if (entry_price - stop_loss) > 0:
                 new_signal = {"type": "LONG", "entry_price": entry_price, "stop_loss": stop_loss, "take_profit_2r": entry_price + 2 * (entry_price - stop_loss)}
-            breakout_state['long_detected'] = False
+            breakout_state['long_detected'] = False # Durumu sıfırla
+
     return new_signal
 
 # --- ANA DÖNGÜ ---
@@ -64,10 +78,15 @@ def main():
     config = load_config()
     setup_logging()
     supabase = get_supabase_client(config)
-    exchange = ccxt.binance()
+    # YENİ: Exchange'i Perpetual Futures modunda başlat
+    exchange = ccxt.binance({
+        'options': {
+            'defaultType': 'future',
+        },
+    })
     ny_timezone = pytz.timezone("America/New_York")
     breakout_states = {symbol: {'short_detected': False, 'long_detected': False, 'peak_price': 0, 'trough_price': 0} for symbol in config['symbols']}
-    logging.info("Sinyal Üretici Başlatıldı.")
+    logging.info("Sinyal Üretici (Perpetual Futures Modu) Başlatıldı.")
     while True:
         try:
             response = supabase.table('signals').select('id, symbol, type, stop_loss, take_profit_2r').eq('status', 'active').execute()
@@ -87,6 +106,7 @@ def main():
                         supabase.table('signals').update({'status': result}).eq('id', trade['id']).execute()
                 except Exception as e:
                     logging.error(f"[{trade['symbol']}] Aktif işlem takibinde hata: {e}")
+            
             symbols_to_scan = [s for s in config['symbols'] if s not in active_symbols]
             if symbols_to_scan:
                 current_ny_time = datetime.now(ny_timezone)
@@ -96,11 +116,12 @@ def main():
                         if not upper_limit: continue
                         ohlcv = exchange.fetch_ohlcv(symbol, '5m', limit=10)
                         df = pd.DataFrame(ohlcv, columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
-                        new_signal = find_new_signal(df, upper_limit, lower_limit, breakout_states[symbol])
+                        new_signal = find_events(df, upper_limit, lower_limit, breakout_states[symbol], symbol, supabase)
                         if new_signal:
                             signal_data = {**new_signal, 'symbol': symbol, 'status': 'active', 'notified': False}
                             supabase.table('signals').insert(signal_data).execute()
                             logging.info(f"[{symbol}] YENİ SİNYAL: {signal_data}")
+            
             time.sleep(config['loop_intervals']['signal_generator'])
         except Exception as e:
             logging.critical(f"Ana döngüde kritik hata: {e}", exc_info=True)
